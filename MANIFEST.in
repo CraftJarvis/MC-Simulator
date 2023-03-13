@@ -1,2 +1,2 @@
 recursive-include minedojo/sim *
-recursive-include minedojo *.json *.yaml *.java 
+recursive-include minedojo *.json *.yaml *.java *.py
