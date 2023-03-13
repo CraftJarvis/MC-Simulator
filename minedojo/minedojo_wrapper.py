@@ -51,7 +51,7 @@ class MineDojoEnv(gym.Env):
                 need_all_success = False,
                 voxel_size = dict(xmin=-1,ymin=0,zmin=1,xmax=1,ymax=1,zmax=2),
                 use_voxel = True,
-                custom_commands = ["/give @p minecraft:diamond_axe 1 0 {ench:[{id:16,lvl:10}]}"],
+                custom_commands = ["/give @p minecraft:diamond_axe 1 0"],
                 force_slow_reset_interval = 2,
             )
         elif name == "Forest": 
@@ -78,7 +78,7 @@ class MineDojoEnv(gym.Env):
                 need_all_success = False,
                 voxel_size = dict(xmin=-1,ymin=0,zmin=1,xmax=1,ymax=1,zmax=2),
                 use_voxel = True,
-                custom_commands = ["/give @p minecraft:shears 1 0"],
+                custom_commands = ["/give @p minecraft:diamond_axe 1 0"],
                 force_slow_reset_interval = 50,
             )
         else:
@@ -177,8 +177,8 @@ class MineDojoEnv(gym.Env):
         return ret
 
     def step(self, action):
-        if self.fix_action:
-            action = self._discrete_to_multi(action)
+        # if self.fix_action:
+        #     action = self._discrete_to_multi(action)
         obs, reward, done, info = self._env.step(action)
         obs = self.replace_text(obs)
         obs['rgb'] = np.ascontiguousarray(obs['rgb'].transpose(1, 2, 0))
