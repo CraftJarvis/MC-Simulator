@@ -14,24 +14,12 @@ import gym
 
 from yaml import parse
 
+from minedojo.minedojo_wrapper import MineDojoEnv
 from minedojo.sim.wrappers import SafeEnvWrapper
 from minedojo.sim import InventoryItem
 
 def f(pid, return_dict):
-    #from minerl.herobraine.env_specs.multitask_survival_specs import get_multitask_env
-    #env = get_multitask_env()
-    # env = minedojo.make(
-    #     task_id="harvest_wool_with_shears_and_sheep",
-    #     image_size=(360,640)
-    # )
-    env = minedojo.make(
-        task_id = "harvest",
-        image_size = (360, 640),
-        pos_targets = ["xpos", "xpos", "zpos", "zpos"],
-        pos_dirs = ["-", "+", "-", "+"],
-        pos_target_weights = 1.0,
-        initial_inventory = [InventoryItem(slot = 0, name = "iron_pickaxe", variant = None, quantity = 1)]
-    )
+    env = MineDojoEnv(name='Forest')
     env = SafeEnvWrapper(env)
     done = False
     obs = env.reset()
