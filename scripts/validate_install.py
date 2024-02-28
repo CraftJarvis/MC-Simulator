@@ -3,7 +3,7 @@ import minedojo
 
 if __name__ == "__main__":
     env = minedojo.make(
-        task_id="combat_spider_plains_leather_armors_diamond_sword_shield",
+        task_id="harvest_wool_with_shears_and_sheep",
         image_size=(288, 512),
         world_seed=123,
         seed=42,
